@@ -1,0 +1,529 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<sparql xmlns='http://www.w3.org/2005/sparql-results#'>
+	<head>
+		<variable name='item'/>
+		<variable name='itemLabel'/>
+	</head>
+	<results>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q173</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Alabama</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q797</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Alaska</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q16641</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>American Samoa</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q816</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Arizona</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1612</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Arkansas</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q46879</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Baker Island</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q99</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>California</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1261</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Colorado</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q779</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Connecticut</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1393</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Delaware</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q812</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Florida</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1428</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Georgia</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q16635</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Guam</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q782</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Hawaii</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q131305</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Howland Island</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1221</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Idaho</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1204</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Illinois</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1415</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Indiana</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1546</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Iowa</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q62218</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Jarvis Island</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q131008</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Johnston Atoll</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1558</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Kansas</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1603</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Kentucky</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q130895</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Kingman Reef</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1588</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Louisiana</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q724</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Maine</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1391</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Maryland</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q771</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Massachusetts</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1166</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Michigan</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q47863</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Midway Atoll</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1527</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Minnesota</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1494</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Mississippi</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1581</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Missouri</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1212</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Montana</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q25359</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Navassa Island</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1553</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Nebraska</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1227</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Nevada</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q759</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>New Hampshire</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1408</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>New Jersey</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1522</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>New Mexico</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1384</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>New York</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1454</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>North Carolina</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1207</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>North Dakota</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q16644</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Northern Mariana Islands</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1397</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Ohio</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1649</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Oklahoma</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q824</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Oregon</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q123076</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Palmyra Atoll</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1400</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Pennsylvania</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1183</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Puerto Rico</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1387</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Rhode Island</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1456</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>South Carolina</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1211</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>South Dakota</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1509</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Tennessee</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1439</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Texas</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q16645</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>United States Minor Outlying Islands</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q11703</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>United States Virgin Islands</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q829</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Utah</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q16551</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Vermont</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1370</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Virginia</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q43296</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Wake Island</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1223</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Washington</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1371</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>West Virginia</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1537</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Wisconsin</literal>
+			</binding>
+		</result>
+		<result>
+			<binding name='item'>
+				<uri>http://www.wikidata.org/entity/Q1214</uri>
+			</binding>
+			<binding name='itemLabel'>
+				<literal xml:lang='en'>Wyoming</literal>
+			</binding>
+		</result>
+	</results>
+</sparql>
