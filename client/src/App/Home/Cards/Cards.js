@@ -4,6 +4,7 @@ import {useDispatch,useSelector} from 'react-redux'
 import Pagination from './Pagination'
 import Card from './Card'
 import Ad from '../Ad'
+import { Loading } from '../../../Components/Loading'
 
 //port 7000
 //enpoint /countries
@@ -12,24 +13,22 @@ import Ad from '../Ad'
 
 function Cards() {
     const dispatch = useDispatch()
-    const theme= useSelector(state => state.theme.mode())
-    const [loading,setLoading] = useState(true)
-    const [mode,setMode] = useState(theme)
     const colors = useSelector(state => state.theme.use())
     const [data,setData] = useState([])
     const sortValue= useSelector(state => state.sort.value)
 
     useEffect(() => {
 
-    }, [sortValue])
-
+    }, [sortValue,data])
 
 
     return (
-        <Container style={{backgroundColor:colors.back}}>
+    <Container style={{backgroundColor:colors.back}}>
          <Ad />
-         <Card colors={colors} setLoading={setLoading} setPagueData={setData} />
-         <Pagination data={data} sortValue={sortValue} />
+         <Card colors={colors} setPagueData={setData} />
+
+         {data.length > 0 && <Pagination data={data} sortValue={sortValue} />}
+         
        
        </Container>
 

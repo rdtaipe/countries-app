@@ -191,12 +191,12 @@ display: flex;
 justify-content: center;
 align-items: flex-end;
 `
-export const FlexCenterLeft = ({Styled,style,children}) => {
+export const FlexCenterLeft = ({Styled,style,children,onClick}) => {
 
 
 
         return (
-            <div style={MixStyledRules(Styled,FlexCenterLeftContainer,style)}>
+            <div style={MixStyledRules(Styled,FlexCenterLeftContainer,style)} onClick={onClick}>
                 {
                     children
                 }

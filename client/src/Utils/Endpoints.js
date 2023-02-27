@@ -8,12 +8,8 @@ export const getCountrycities =  (country) => {
 } 
 
 
-export const getPlaces=(place)=>{
+export const getDetail=(name)=>{
 	// localhost:7000/places/:Argentina
-    const places = axios.get(`http://localhost:7000/places/${place}`)
-    return places
-
-   
-
-    }
+return axios.get(`http://localhost:7000/details/${name}`)
+}
 

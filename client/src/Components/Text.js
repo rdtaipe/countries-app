@@ -1,20 +1,25 @@
 
 import styled from "styled-components";
+import {useSelector} from "react-redux"
 import{MixStyledRules} from "../Utils/MixStyledRules"
 export const Text=({Styled,style,children,type,key})=>{
+    const colors = useSelector(state => state.theme.use())
 
-    const Component=()=>{
+    const Default={
+        color:colors.textBasic,
+    }
+    const Mix={...MixStyledRules(Styled,DefaultStyled),...Default,...style}
+
+
         return (
-            <p key={key} style={MixStyledRules(Styled,DefaultStyled,style)}>
+            <p key={key} style={Mix}>
                 {
                     children
                 }
                 
             </p>
         )
-}
-        return Component()
- 
+
 }
 
 const DefaultStyled=styled.p`

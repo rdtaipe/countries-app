@@ -4,10 +4,9 @@ import { useSelector } from 'react-redux'
 import { SearchBar } from '../../Components/SearchBar'
 import { FlexCenterLeft } from '../../Components/Flex'
 import { Container } from '../../Components/Container'
-
- function Season(props) {
+import { Text } from '../../Components/Text'
+ function Season({message,setValue,titleStyle}) {
     const colors = useSelector(state => state.theme.use())
-    
 
     var inputContainerStyle={
         background:colors.btnBasic,
@@ -22,27 +21,26 @@ import { Container } from '../../Components/Container'
         color:colors.allIconsActive,
         fontWeight: 500,
     }
+    const HandleSelect = (e) => {
+        setValue(e.target.value)
+    }
+
     return (
         <Container>
-            <label style={{color:colors.textBasic}} htmlFor="season">Season</label>
-            <FlexCenterLeft>
-                   <FlexCenterLeft Styled={BoxModif} style={inputContainerStyle}>
-                    <Input active={inputContainerStyleActive} type="radio" name="season" id="season" className='in' value="summer" />
-                    <label htmlFor="season" style={labelContainerStyle}>Summer</label>
-                 </FlexCenterLeft> 
-                   <FlexCenterLeft Styled={BoxModif} style={inputContainerStyle}>
-                    <Input active={inputContainerStyleActive} type="radio" name="season" id="season" className='in' value="winter" />
-                    <label htmlFor="season" style={labelContainerStyle}>Winter</label>
-                 </FlexCenterLeft> 
-                   <FlexCenterLeft Styled={BoxModif} style={inputContainerStyle}>
-                    <Input active={inputContainerStyleActive} type="radio" name="season" id="season" className='in' value="autumn" />
-                    <label htmlFor="season" style={labelContainerStyle}>Autumn</label>
-                 </FlexCenterLeft> 
-                   <FlexCenterLeft Styled={BoxModif} style={inputContainerStyle}>
-                    <Input active={inputContainerStyleActive} type="radio" name="season" id="season" className='in' value="spring" />
-                    <label htmlFor="season" style={labelContainerStyle}>Spring</label>
-                 </FlexCenterLeft> 
+            <label style={titleStyle} htmlFor="season">Season</label>
+            <FlexCenterLeft style={{marginBottom: 10}}>
+                {['summer','winter','autumn','spring'].map((n) => {
+                    return (
+                        <FlexCenterLeft Styled={BoxModif} style={inputContainerStyle}>
+                            <Input active={inputContainerStyleActive} type="radio" name="season" id="season" className='in' value={n} onClick={HandleSelect}/>
+                            <label htmlFor="season" style={labelContainerStyle}>{n}</label>
+                        </FlexCenterLeft>
+                    )
+                })}
+                
             </FlexCenterLeft>  
+            <Text>{message}</Text>  
+
         </Container>
     )
 }

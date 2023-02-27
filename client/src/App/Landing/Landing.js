@@ -7,17 +7,7 @@ import Hero from './Hero';
 import View from './View';
 
  function Landing(props) {
-
-    const dispatch = useDispatch()
     const Colors = useSelector(state => state.theme.use())
-    const webPage= useSelector(state => state.page);
-
-
-useEffect(() => {
-    dispatch({type:"SET_PAGE_TYPE",payload:'landing'})
-
-}, [webPage])
-    
 
     return (
         <Conainer style={{background:Colors.back}}>

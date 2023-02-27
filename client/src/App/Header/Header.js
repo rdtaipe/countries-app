@@ -1,18 +1,15 @@
 import React,{useState,useEffect,useRef, } from 'react'
-//import ReactComponent
-
-
 import styled from 'styled-components'
 import {useDispatch,useSelector} from 'react-redux'
 import { Link } from 'react-router-dom';
 import {ReactComponent as Logo}  from '../../Assets/logo.svg'
 
 import Theme from './Theme'
-import Filter from './Filter/Filter'
 import { SearchBar } from '../../Components/SearchBar';
 
 function Header() {
     const colors = useSelector(state => state.theme.use())
+
 
     return (
         <Container  >
@@ -52,7 +49,7 @@ display: flex;
 align-items: center;
 padding: 0 50px;
 backdrop-filter: blur(20px) saturate(3) brightness(.9);
-z-index: 9999!important;
+z-index: 99999!important;
 display: flex;
 `
 const End = styled.div`

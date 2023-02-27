@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { getCountrycities,getPlaces } from '../../Utils/Endpoints'
+import { getCountrycities,getDetail } from '../../Utils/Endpoints'
 import Header from './Header';
 import Location from './Location';
 
@@ -16,11 +16,14 @@ function Detail(props) {
 
 
     useEffect(() => {
-        getPlaces(name).then(res => {
+        getDetail(name).then(res => {
             setPlace(res.data)
+            console.log(res.data)
             dispatch({type:"SET_PAGE_TYPE",payload:'filter'})
+         
         }).catch(err => {
             dispatch({type:"SET_PAGE_TYPE",payload:"404"})
+            console.log(name)
         })
 
     }, [name,colors]);

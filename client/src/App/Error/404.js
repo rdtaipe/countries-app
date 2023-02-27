@@ -6,6 +6,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import { Text } from '../../Components/Text'
 
  function Page404(props) {
+    const dispatch = useDispatch()
 
     const Colors = useSelector(state => state.theme.use())
     const page = useSelector(state => state.page)
@@ -18,9 +19,11 @@ import { Text } from '../../Components/Text'
     return (
         <Container key={"404"} style={{background:Colors.background,}}>
         <h1 style={{color:Colors.btnBasic}}>404</h1>
-        <Text key={"404,Page not found"} style={{color:Colors.textBasic}}>Page not found</Text>
+        <Text key={"404,Page not found"} >This Page not Exist</Text>
 
-        <Link to={"/"}> 
+        <Link to={"/"} onClickCapture={()=>{
+                dispatch({type:"SET_PAGE_TYPE",payload:'home'})
+        }}> 
             <Button style={{background:Colors.btnBasic,color:Colors.btnTextBasic}}>Go Home</Button>
         </Link>
         </Container>

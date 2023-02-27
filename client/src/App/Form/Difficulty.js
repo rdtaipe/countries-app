@@ -4,10 +4,9 @@ import { useSelector } from 'react-redux'
 import { SearchBar } from '../../Components/SearchBar'
 import { FlexCenterLeft } from '../../Components/Flex'
 import { Container } from '../../Components/Container'
-
- function Difficulty(props) {
+import { Text } from '../../Components/Text'
+ function Difficulty({message,setValue,titleStyle}) {
     const colors = useSelector(state => state.theme.use())
-    
 
     var inputContainerStyle={
         background:colors.btnBasic,
@@ -22,25 +21,24 @@ import { Container } from '../../Components/Container'
         color:colors.allIconsActive,
         fontWeight: 500,
     }
+    const HandleSelect = (e) => {
+        setValue(e.target.value)
+    }
 
     return (
         <Container>
-            <label style={{color:colors.textBasic}} htmlFor="difficulty">Difficulty</label>
-            <FlexCenterLeft>
-                <FlexCenterLeft Styled={BoxModif} style={inputContainerStyle}>
-                    <Input active={inputContainerStyleActive} type="radio" name="difficulty" id="difficulty" className='in' value="easy" />
-                    <label htmlFor="difficulty" style={labelContainerStyle}>Easy</label>
-                 </FlexCenterLeft> 
-                <FlexCenterLeft Styled={BoxModif} style={inputContainerStyle}>
-                    <Input active={inputContainerStyleActive} type="radio" name="difficulty" id="difficulty" className='in' value="medium" />
-                    <label htmlFor="difficulty" style={labelContainerStyle}>Medium</label>
-                 </FlexCenterLeft> 
-                <FlexCenterLeft Styled={BoxModif} style={inputContainerStyle}>
-                    <Input active={inputContainerStyleActive} type="radio" name="difficulty" id="difficulty" className='in' value="hard" />
-                    <label htmlFor="difficulty" style={labelContainerStyle}>Hard</label>
-                 </FlexCenterLeft> 
-                  
-            </FlexCenterLeft>  
+            <label style={titleStyle} htmlFor="difficulty">Select Difficulty</label>
+            <FlexCenterLeft style={{marginBottom: 10}}>
+                { [1,2,3,4,5].map((n) => {
+                    return (
+                        <FlexCenterLeft Styled={BoxModif} style={inputContainerStyle}>
+                            <Input active={inputContainerStyleActive} type="radio" name="difficulty" id="difficulty" className='in' value={n} onClick={HandleSelect}/>
+                            <label htmlFor="difficulty" style={labelContainerStyle}>{n}</label>
+                        </FlexCenterLeft>
+                    )
+                })}            
+            </FlexCenterLeft>
+            <Text>{message}</Text>  
         </Container>
     )
 }

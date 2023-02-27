@@ -1,9 +1,6 @@
 const { Request, Response } = require('express');
 const {Op} = require('sequelize')
 const { Country } = require('../db.js');
-const getCities = require('../Utils/getCities.js');
-const getPlaces = require('../Utils/getPlaces.js');
-
 
 const getAllCountries = async (req = Request, res = Response) => {
     try {
@@ -13,18 +10,15 @@ const getAllCountries = async (req = Request, res = Response) => {
         res.status(500).json({message: 'Get all countries error'});
     }
 }
+
 const getCountryById = async (req = Request, res = Response) => {
     const {idPais}= req.params
 
     try {
         const country = await Country.findByPk(idPais);
   
-        // console.log(country)
         if(country){
-            getCities(country.name).then((data)=>{
-                var arr=[country,{states:data}]
-               res.status(200).json(arr);
-            })
+            res.status(200).json(country);
         }else{
             return res.status(404).json({message: `Country id ${idPais} not exist or not loaded`});
         }

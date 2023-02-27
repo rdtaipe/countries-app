@@ -57,12 +57,14 @@ const sort= (arr,order) =>{
     .then(res => {
         return res
     })
+    .catch(err => {
+        dispatch({type:"SET_PAGE_TYPE",payload:"error"})
+    })
 
     return arr
 
   
 }
-  
 
 export function SearchBar({exit,style,Refresh}) {
     const dispatch = useDispatch()
@@ -75,9 +77,7 @@ export function SearchBar({exit,style,Refresh}) {
     const [currentFilterIcon,setCurrentFilterIcon]= useState("history_edu")
     const [currentOrderIcon, setCurrentOrderIcon] = useState("all_inclusive")
 
-
     const contries= useSelector(state => state.selectedCountries)
-
 
     const [input,setInput] = useState('')
     const [data,setData] = useState([])
@@ -88,7 +88,6 @@ export function SearchBar({exit,style,Refresh}) {
 
     const typeOrder = useSelector(state => state.sort.order)
 
- 
     const [order,setOrder] = useState("all")
 
     const DefaulStyle={background:colors.boxBackground,width:400,height:40}
@@ -112,9 +111,17 @@ const mixStyle = {...DefaulStyle,...style}
         
         .then(res => {
             var value= res.data
+            ///innert innerHTM      
            dispatch({type:"SET_DATA",payload:value})
            setData(value)
         })
+        .catch(err => {
+            dispatch({type:"SET_DATA",payload:[]})
+            dispatch({type:"SET_PAGE_TYPE",payload:"error"})
+        })
+
+
+
         if(input.length>0){
             setMenuFilter(false)
         }
@@ -126,23 +133,26 @@ const mixStyle = {...DefaulStyle,...style}
                  inputRef.current.value=''
              }
          })
-        if(contries.length>0){
+        if(contries.length>0,Refresh!==undefined){
             Refresh(Math.random())
         }
     
         changeInputStyle()
-    }, [input,colors,sortFilter,sortOrder,filterType,typeOrder,order,contries])
-
-    const showFilterFunc = () => {
+    }, [input,colors,sortFilter,sortOrder,filterType,typeOrder,order,contries,webPage])
+// console.log(webPage)
+    const showFilterFunc = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
         setMenuFilter(!menuFilter)
 
     }
     const handleInput = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+       
         setInput(e.target.value)
         dispatch({type:"SET_INPUT_VALUE",payload:e.target.value})
     }
-
-
     const changeInputStyle = () => {
         const input = inputRef.current
         const style = document.createElement('style');
@@ -152,7 +162,7 @@ const mixStyle = {...DefaulStyle,...style}
     }
     
     const setOrderIcon= (item)=>{
-       
+    
         setCurrentOrderIcon(item.icon)
         dispatch({type:"SET_ORDER_TYPE",payload:item.name})
         Order(item)
@@ -173,7 +183,7 @@ const mixStyle = {...DefaulStyle,...style}
             </FlexCenterLeft>
             
             <FlexCenterLeft>
-                <Input ref={inputRef} className="inputChangeColor" style={{color:colors.allIconsActive}}   placeholder='Buscar Pais' onChange={handleInput}>
+                <Input ref={inputRef} className="inputChangeColor" style={{color:colors.allIconsActive}}   placeholder='Search Country' onChange={handleInput}>
                 </Input>
             </FlexCenterLeft>
                 
@@ -188,23 +198,27 @@ const mixStyle = {...DefaulStyle,...style}
             <FlexRight  style={{position:"absolute",top:35}}>
             <MenuItem style={{width:200,height:"auto",background:colors.boxBackground,position:"absolute",padding:"10px 0px"}}>
                     {webPage==='home'&&<Text style={TextStyle} >Filter By</Text>}
-                    <List>
-                    {webPage==='home'&&<>{ orderIcons.map((item,i)=>{
-                    return(
-                        <ListItem style={{color:colors.textMenuTitleBasic}} onClick={()=>{setOrderIcon(item)}}>
-                            <IconItem icon={item.icon} style={{fontSize:"20px",margin:10}}/> 
-                            {
-                            typeOrder===item.v1||order===item.v2?item.text2:item.text1
+                    {webPage==='home'&&<List>
+                        { orderIcons.map((item,i)=>{
+                        return(
+                            <ListItem style={{color:colors.textMenuTitleBasic}} onClick={(e)=>{
+                                e.preventDefault()
+                                e.stopPropagation()
                             
-                            }
-                        </ListItem>
-                    )
-                })}
-                </>
-                }
-                    </List>
+                                setOrderIcon(item)}}>
+                                <IconItem icon={item.icon} style={{fontSize:"20px",margin:10}}/> 
+                                {
+                                typeOrder===item.v1||order===item.v2?item.text2:item.text1
+                                
+                                }
+                            </ListItem>
+                        )
+                    })}
+                    </List>}
+                    
                     <Text style={TextStyle} >Order By</Text>
                     <List 
+                    name={"filterIcons"}
                     show={true} 
                     data={filterIcons} 
                     keyName="text" 
@@ -226,9 +240,7 @@ const mixStyle = {...DefaulStyle,...style}
                     keyName="name" 
                     ulStyle={{background:colors.boxBackground,width:mixStyle.width}}
                     liStyle={{color:colors.allIconsActive}}
-                    to={!exit||exit!==undefined?undefined:"/detail/"}
-                    toKeyName={!exit||exit!==undefined?undefined:"name"}
-                    onClickItem={(e,item)=>{setInput('');dispatch({type:"SET_SELECTED_COUNTRIES",payload:{id:item.id,name:item.name}})}}
+                    onClickItem={(e,item)=>{setInput('');dispatch({type:"SET_SELECTED_COUNTRIES",payload:{id:item.id,name:item.name}}),console.log(item.name)}}
                     />
                 </MenuItem>
             </FlexLeft>

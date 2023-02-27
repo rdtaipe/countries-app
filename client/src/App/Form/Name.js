@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux'
 import { SearchBar } from '../../Components/SearchBar'
 import { FlexCenterLeft } from '../../Components/Flex'
 import { Container } from '../../Components/Container'
+import { Text } from '../../Components/Text'
 
-function Name(props) {
+function Name({message,setValue,titleStyle}) {
     const colors = useSelector(state => state.theme.use())
-    const [input,setInput] = useState('')
     
     var InputStyle={
         background:colors.boxBackground,
@@ -16,12 +16,15 @@ function Name(props) {
         borderRadius: "4px",
     }
 
-    
+    const handleChange = (e) => {
+        setValue(e.target.value)
+    }
     
     return (
         <Container>
-           <label style={{color:colors.textBasic}} htmlFor="name">Name</label>
-            <Input  style={InputStyle} type="text" name="name" id="name" placeholder='Name' /> 
+           <label style={titleStyle} htmlFor="name">Insert your Name</label>
+            <Input style={InputStyle} type="text" name="name" id="name" placeholder='Name'  onChange={handleChange}/> 
+            <Text>{message}</Text>
         </Container>
     )
 }

@@ -1,6 +1,7 @@
 import React,{useState,useEffect}from 'react'
 import styled from 'styled-components'
 import {useDispatch,useSelector} from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
@@ -10,6 +11,7 @@ import { Container } from '../../Components/Container'
 import { Button } from '../../Components/Button'
 import { SearchBar } from '../../Components/SearchBar'
 import {FlexCenterLeft} from '../../Components/Flex'
+import { Text } from '../../Components/Text'
 import Countries from './Countries'
 import Season from './Season'
 import Difficulty from './Difficulty'
@@ -18,43 +20,121 @@ import Name from './Name'
 
 function Form() {
     const dispatch = useDispatch()
+    const history = useHistory()
     const page= useSelector(state => state.page)
     const colors = useSelector(state => state.theme.use())
     const contries= useSelector(state => state.selectedCountries)
     const [refresh,setRefresh] = useState(false)
 
+    const [name,setName] = useState('')
+    const [difficulty,setDifficulty] = useState(0)
+    const [duration,setDuration] = useState('')
+    const [season,setSeason] = useState('')
+
+    const [nameMessage,setNameMessage] = useState('')
+    const [difficultyMessage,setDifficultyMessage] = useState('')
+    const [durationMessage,setDurationMessage] = useState('')
+    const [seasonMessage,setSeasonMessage] = useState('')
+    const [countriesMessage,setCountriesMessage] = useState('')
+
+    const [generalMessage,setGeneralMessage] = useState('')
+
+    const [pass,setPass] = useState(false)
+
+
     useEffect   (() => {
         dispatch({type:"SET_PAGE_TYPE",payload:'form'})
 
+        if(pass){
+            setGeneralMessage('')
+            axios.post('http://localhost:7000/activities', {
+                name:name,
+                difficulty: difficulty,
+                duration: duration,
+                season: season,
+                countries: contries
+            })
+            .then(res => {
+                dispatch({type:"SET_PAGE_TYPE",payload:'home'})
+                history.push('/')
+                  
+            })
+            .catch(err => {
+                console.log(err);
+                setGeneralMessage('Something went wrong, please try again later')
+            })
 
-    },[page,contries,refresh])
+        }
+
+        return () => {
+            setNameMessage('')
+            setDifficultyMessage('')
+            setDurationMessage('')
+            setSeasonMessage('')
+            setCountriesMessage('')
+            setGeneralMessage('')
+
+        }
+
+    },[page,contries,refresh,pass])
+
+
+    const ifPass= () => {
+        if(name.length < 3){
+            setNameMessage('Name must be at least 3 characters long')
+            setPass(false)
+            
+        }else{
+            setNameMessage('')
+            setPass(true)
+        }
+        if(difficulty === 0){
+            setDifficultyMessage('Difficulty must be selected')
+            setPass(false)
+        }else{
+            setDifficultyMessage('')
+            setPass(true)
+
+        }
+        if(duration === ''){
+            setDurationMessage('Duration must be selected')
+            setPass(false)
+        }else{
+            setDurationMessage('')
+            setPass(true)
+        }
+        if(season === ''){
+            setSeasonMessage('Season must be selected')
+            setPass(false)
+        }else{
+            setSeasonMessage('')
+            setPass(true)
+        }
+        if(contries.length === 0){
+            setCountriesMessage('Countries must be selected')
+            setPass(false)
+        }else{
+            setCountriesMessage('')
+            setPass(true)
+        }
+
+
+    }
+
 
 
     const HandleSubmit = (e) => {
         e.preventDefault()
-        console.log({
-                name:e.target.name.value,
-                difficulty: e.target.difficulty.value,
-                duration: e.target.duration,
-                season: e.target.season.value,
-                countries: contries
-        })
-        axios.post('http://localhost:7000/activities', {
-            name: e.target.name.value,
-            difficulty: e.target.difficulty.value,
-            duration: e.target.duration.value,
-            season: e.target.season.value,
-            countries: contries
-        })
-        .then(res => {
-            console.log(res.data);
-            window.location.href = '/'
-            
-        })
-        .catch(err => {
-            console.log(err);
-        })
+    ifPass()
+    
 
+
+    }
+
+    const titlesStyle={
+        color:colors.textBasic,
+        fontSize:23,
+        fontWeight:600
     }
 
     return (
@@ -62,18 +142,15 @@ function Form() {
           
         <FormContainer onSubmit={HandleSubmit}>
         <h1>Form</h1>
+            <FormInput><Name message={nameMessage} setValue={setName} titleStyle={titlesStyle}/> </FormInput>
+            <FormInput><Difficulty message={difficultyMessage} setValue={setDifficulty} titleStyle={titlesStyle}/> </FormInput>
+            <FormInput> <Duration message={durationMessage} setValue={setDuration} titleStyle={titlesStyle}/> </FormInput>
+            <FormInput><Season message={seasonMessage} setValue={setSeason} titleStyle={titlesStyle}/> </FormInput>
             <FormInput>
-                <Name/>
-                
-            </FormInput>
-            <FormInput><Difficulty/></FormInput>
-            <FormInput> <Duration/></FormInput>
-            <FormInput><Season/></FormInput>
-            <FormInput>
-                <Countries contries={contries} setRefresh={setRefresh}/>
+                <Countries contries={contries} setRefresh={setRefresh} message={countriesMessage} setMessage={setCountriesMessage}  titleStyle={titlesStyle}/>
             </FormInput>
             <Button type="submit" style={{padding: "22px 24px",fontSize: 16}} iconStyle={{paddingLeft:"6px",fontSize: 25}} iconRight={"send"}>Submit</Button>
-            
+            <Text>{generalMessage}</Text>
         </FormContainer>
 
         </Container>

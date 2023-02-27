@@ -15,7 +15,7 @@ export function Button({style,onClick,children,type,iconLeft,iconRight,iconStyle
         fontSize: "auto"
 
     }
-    const ContainerMix= {...style,...ContainerStyle }
+    const ContainerMix= {...ContainerStyle,...style }
     const iconStyleMix = {...iconStyle,iconDefauldStyle}
 
 

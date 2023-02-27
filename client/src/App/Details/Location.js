@@ -19,14 +19,10 @@ function Location({name,data}) {
     useEffect(() => {
             setCities(data)
 
-    }, [data,name,colors]);
-    console.log(cities)
-    const handleLoad=(e)=>{
-        e.target.style.opacity=1;
-        e.target.style.display="block";
-    }
-    return (cities.length===0?null:
-        <Container>
+        }, [data,name,colors]);
+
+        return (cities.length===0?null:
+            <Container>
 
 <Box key={cities.defaulValue[0].name} >
             <FlexCenterLeft style={{marginTop:20}}>
@@ -60,7 +56,9 @@ function Location({name,data}) {
                 population: {cities.defaulValue[0].population}
             </Text>
 
-            <Link to="/" style={{position:"absolute",right:"3%"}}>
+            <Link to="/" style={{position:"absolute",right:"3%"}}onClickCapture={()=>{
+                dispatch({type:"SET_PAGE_TYPE",payload:'home'})
+        }}>
                 <Button style={{background:colors.btnBasicDesabled,color:colors.btnTextBasicDesabled}} iconLeft="chevron_left" >
                    back home
                 </Button>

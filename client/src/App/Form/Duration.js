@@ -1,14 +1,19 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import { SearchBar } from '../../Components/SearchBar'
 import { FlexCenterLeft } from '../../Components/Flex'
 import { Container } from '../../Components/Container'
+import { Text } from '../../Components/Text'
 
-export function Duration(props) {
+export function Duration({message,setValue,titleStyle}) {
     const theme = useSelector(state => state.theme.mode())
     const colors = useSelector(state => state.theme.use())
-    
+
+    const [start,setStart] = useState(null)
+    const [end,setEnd] = useState(null)
+
+  
     var ContainerStyle={
         background:colors.boxBackground,
         border:"2px solid "+colors.btnBasic,
@@ -20,14 +25,29 @@ export function Duration(props) {
         maxWidth: 150,
     }
 
+    const HandleChangeStart = (e) => {
+            setStart(e.target.value)
+    }
+    const HandleChangeEnd = (e) => {
+        setEnd(e.target.value)
+    }
+    useEffect(() => {
+        if(start && end) {
+            setValue([start,end])
+        }else{
+            setValue('')
+        }
+    },[start,end,message])
     return (
         <Container>    
-            <label style={{color:colors.textBasic}} htmlFor="duration">Duration</label>
+            <label style={titleStyle} htmlFor="duration">Duration</label>
             <FlexCenterLeft style={{flexDirection: "column"}}>
                 <FlexCenterLeft Styled={BoxStyleMod} style={ContainerStyle}>
                     <label htmlFor="duration">Start:</label>
-                    <Input  type="date" theme={theme} style={InputStyle} name="duration" id="duration"
+                    <Input   type="date" theme={theme} style={InputStyle} name="duration" id="duration"
                         min={new Date().toISOString().split('T')[0]}
+                        onChange={HandleChangeStart}
+                       
                     />
                 </FlexCenterLeft>
 
@@ -37,9 +57,12 @@ export function Duration(props) {
                     min={
                         new Date().toISOString().split('T')[0]
                     }
-                    max="2023-12-31"/>
+                    max="2023-12-31"
+                    onChange={HandleChangeEnd}
+                    />
                 </FlexCenterLeft>
             </FlexCenterLeft>
+            <Text>{message}</Text>  
         </Container>
     )
 }

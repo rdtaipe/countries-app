@@ -6,16 +6,19 @@ const {DB_USER, DB_PASSWORD, DB_HOST,} = process.env;
 
 
 const sequelize = new Sequelize(
-  'countries',//Nombre de la base de datos
-  DB_USER,//Nombre de usuario
-  DB_PASSWORD,//Contraseña
-  {
-  dialect: 'postgres',// Especifica que se está utilizando PostgreSQL como el dialecto 
-  host: DB_HOST,//Especifica que la base de datos se encuentra en el servidor local
-  port: 5432,//Especifica el puerto en el que se encuentra corriendo la base de datos
-  logging: false, //  Especifica si se deben mostrar los comandos SQL en la consola.
-  native: false, // Especifica si se deben usar las funciones nativas de PostgreSQL para mejorar el rendimiento
-})
+    'countries',//Nombre de la base de datos
+    DB_USER,//Nombre de usuario
+    DB_PASSWORD,//Contraseña
+    {
+    dialect: 'postgres',// Especifica que se está utilizando PostgreSQL como el dialecto 
+    host: DB_HOST,//Especifica que la base de datos se encuentra en el servidor local
+    port: 5432,//Especifica el puerto en el que se encuentra corriendo la base de datos
+    logging: false, //  Especifica si se deben mostrar los comandos SQL en la consola.
+    native: false, // Especifica si se deben usar las funciones nativas de PostgreSQL para mejorar el rendimiento
+    storage: 'database.sqlite'
+},
+
+)
 const basename = path.basename(__filename);
 
 const modelDefiners = [];

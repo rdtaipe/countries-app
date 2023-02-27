@@ -29,7 +29,7 @@ function Pagination({data,setData,sortValue}) {
   const setPageNum=(v)=>{
     dispatch({type:'SET_PAGE',payload:v})
   }
-    
+    //next p+1
     const next = () => {
         if(page < data.length-1){
             setPage(page+1)
@@ -37,16 +37,19 @@ function Pagination({data,setData,sortValue}) {
         }
 
     }
+    //prev p-1
     const previews = () => {
         if(page > 0){
             setPage(page-1)
             setPageNum(page-1)
         }
     }
+    //last p=0
     const last=()=>{
         setPage(data.length-1)
         setPageNum(data.length-1)
     }
+    //first p+data.length-1
     const first=()=>{
         setPage(0)
         setPageNum(0)
@@ -54,13 +57,6 @@ function Pagination({data,setData,sortValue}) {
     const active = (i) => {
         setPage(i)
         setPageNum(i)
-    }
-    const moment = () => {
-        var c=4
-        var arr=[]
-        
-
-
     }
     const fixedData=(arr, n)=>{
         var newArr = []
@@ -99,17 +95,15 @@ function Pagination({data,setData,sortValue}) {
             }else if(n>total-s-1 ){//mayor a 21
                 setShowPoints('first')
             }
-
-
         }else{
             setShowPoints("none")
         }
     }
-    // console.log(showPoints)
 
     return (
         <Conatiner >
             <PaginationBar>
+
             <ArrowLast style={{color:colors.allIconsActive}} onClick={previews}> ▲ </ArrowLast>
             <FirstBtn style={{background:colors.allIcons,color:colors.allIconsActive}} className={`n-pag ${page===0?"active":""} ${mode==="dark"?"dark":""}`} onClick={first}>
                {currentData[0]}

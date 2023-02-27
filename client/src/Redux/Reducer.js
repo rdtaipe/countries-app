@@ -27,10 +27,15 @@ const getLocal = (key) => {
 
  export var initialState = {
     user:{
+        type:"guest",//notLogged,guest,Logged
         username:"",
         token:"",
+        user:()=>{return getLocal('user')},
+        landing:()=>{return getLocal('landing')},
         status:()=>{return getLocal('status')},//logged,notLogged
-        setStaus:(v)=>{saveLocal('status',v)}//logged,notLogged
+        setStaus:(v)=>{saveLocal('status',v)},//logged,notLogged
+        setLanding:(v)=>{saveLocal('landing',v)},
+        setUser:(v)=>{saveLocal('user',v)},
     },
     theme: {
         mode:()=> {return getLocal('theme')},
@@ -91,12 +96,10 @@ const getLocal = (key) => {
         page:0,
         perPage:10,
     },
-    page:"home",//landing,home,filter/form/404
+    page:"",//landing,home,filter/form/404
     setPage:(v)=>{initialState.page=v},
 
     selectedCountries:[],
-    
-
 
     
 }
@@ -182,7 +185,30 @@ const reducer = (state = initialState, {type,payload}) => {
             }
 
         }
+        case 'REMOVE_SELECTED_COUNTRIES':{
+         
+            //remover el intem seleccionado del array
+            let selectedCountries = state.selectedCountries
+            let index = selectedCountries.findIndex((item)=>item.id===payload.id)
+            if(index!==-1){
+                selectedCountries.splice(index,1)
+            }          
+            return{
+                ...state,
+                selectedCountries:selectedCountries
+            }
+        }
 
+        case 'SET_USER_TYPE':{
+            return{
+                ...state,
+                user:{
+                    ...state.user,
+                    type:payload
+                }
+            }
+        }  
+       
         
 
 

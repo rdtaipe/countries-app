@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useSelector } from 'react-redux'
+import {useDispatch, useSelector } from 'react-redux'
 import { SearchBar } from '../../Components/SearchBar'
 import { FlexCenterLeft } from '../../Components/Flex'
 import { Container } from '../../Components/Container'
+import { Text } from '../../Components/Text'
 
- function Countries({contries,setRefresh}) {
+ function Countries({contries,setRefresh,message,setMessage,titleStyle}) {
+    const dispatch = useDispatch()
     const colors = useSelector(state => state.theme.use())
     
     var inputContainerStyle={
@@ -21,25 +23,40 @@ import { Container } from '../../Components/Container'
         color:colors.allIconsActive,
         fontWeight: 500,
     }
+
+    const handleCheck = (e) => {
+        var name= e.target.parentElement.querySelector('label').innerText
+        var value = e.target.parentElement.querySelector('label').getAttribute('value')
+    
+        dispatch({type:"REMOVE_SELECTED_COUNTRIES",payload:{id:value,name:name}})
+        setRefresh(Math.random())
+    }
+
     return (
         <Container>
-                <label style={{color:colors.textBasic}} htmlFor="countries">Countries</label>
+                <label style={titleStyle} htmlFor="countries">Countries</label>
                 <SearchBar exit={false} style={{width: "100%",border:"2px solid "+ colors.allIconsActive,margin: "10px 0px"}} Refresh={(item)=>{
                     setRefresh(Math.random())
+                    if(contries.length>0){
+                        setMessage('')
+                    }else{
+                        setMessage('Countries must be selected')
+                    }
+            
                 }}/>
                 <FlexCenterLeft style={{flexWrap: "wrap"}}>
                 { contries.map((item,i)=>{
                         return(
-                            <FlexCenterLeft Styled={BoxModif} style={inputContainerStyle} key={i} >
-                                <Input active={inputContainerStyleActive} type="checkbox" name="countries" className='in' id={item.id} spellCheck="true" />
-                                <label  style={labelContainerStyle} htmlFor={item.id}>{item.name}</label>
+                            <FlexCenterLeft Styled={BoxModif} style={inputContainerStyle} key={i}  onClick={handleCheck}>
+                                <Input active={inputContainerStyleActive} type="checkbox" name="countries" className='in' id={item.id} checked />
+                                <label  style={labelContainerStyle} htmlFor={item.id} value={item.id}>{item.name}</label>
                             </FlexCenterLeft>
                         )
                     })
 
                 }
               </FlexCenterLeft>
-
+              <Text>{message}</Text>  
         </Container>
     )
 }

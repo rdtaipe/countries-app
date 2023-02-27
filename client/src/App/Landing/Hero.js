@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Gif from '../../Assets/globe.gif'
 import Video from '../../Utils/Video'
-export default function Hero(props) {
+export default function Hero() {
     
 
     return (

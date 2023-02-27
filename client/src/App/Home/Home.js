@@ -9,28 +9,28 @@ import Video from '../../Utils/Video'
 import Audio from '../../Utils/Audio';
 import Cards from './Cards/Cards';
 
+import { Loading } from '../../Components/Loading';
+
 
 function Home(props) {
     const dispatch = useDispatch()
     const colors = useSelector(state => state.theme.use())
     const webPage= useSelector(state => state.page);
-
+    const getData= useSelector(state => state.sort.data)
 
 useEffect(() => {
-    dispatch({type:"SET_PAGE_TYPE",payload:'home'})
-    document.body.style.background = colors.back
 
-}, [webPage,colors])
+    dispatch({type:"SET_PAGE_TYPE",payload:'home'})
+
+}, [webPage,colors,getData])
 
 
     return (
         <Container style={{background:colors.back}}>
     
-            <Video  w={500}/>
-        
-            <Cards />
-
-            {/* <Audio /> */}
+            {getData.length>0&&<Video  w={500}/>}
+            {getData.length>0? <Cards />:<Loading/>}
+         
          
         </Container>
     )

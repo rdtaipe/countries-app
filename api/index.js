@@ -17,8 +17,8 @@ db.sync({ force: true }).then(() => {
 
 
 
- const Load =require('./src/Utils/Load.js')
- Load()
+ const Filler =require('./src/Utils/Filler.js')
+ Filler()
 
 
 

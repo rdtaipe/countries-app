@@ -13,12 +13,8 @@ function Card({colors,setPagueData,setLoading}) {
     const [data,setData] = useState([])
     //filter
     const getData= useSelector(state => state.sort.data)
-    const sortValue= useSelector(state => state.sort.value)
-    const sortFilter= useSelector(state => state.sort.filter)
-    const sortOrder= useSelector(state => state.sort.order)
 
     const itemsPerPage = 10;
-
 
     useEffect(() => {
         setPage(pag)
@@ -38,14 +34,14 @@ function Card({colors,setPagueData,setLoading}) {
             })
             setPagueData(arr)
             setData(arr)
-            setLoading(false)
     
         }
 
-    }, [getData,pag])
+    }, [getData,pag,page])
 
     return (
         <Container style={{background:colors.back}}>
+            
         {data[page]!==undefined? data[page].map((country,i) => {
             
             return (
@@ -92,15 +88,13 @@ align-items: flex-start;
 `
 
 const CardItem = styled.div`
-/* perfect grid */
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-padding: 1rem;
+padding: 14px;
 text-align: center;
 border-radius: 4px;
 box-sizing: content-box;
 flex-grow: 1;
 height: 260px;
-/* perfect grid */
 z-index: 10;
 backdrop-filter: blur(20px) saturate(200%) ;
 overflow: hidden;
