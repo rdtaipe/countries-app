@@ -18,7 +18,7 @@ useEffect(() => {}, [webPage])
 
                     return(webPage!=="home"&&webPage!=="form"&&name!=="filterIcons"?
 
-                    <Link key={item.name} to={`/detail/`+item.name}  onClick={onClick} >
+                    <Link key={item.name} to={`/detail/`+item.name}  onClick={(e)=>{onClick(e)}} >
                          <ListItem style={liStyle}>
                         {item[iconName]&&<IconItem icon={item.icon} style={{fontSize:"20px",margin:10}}/>}
                         {item[keyName]}
@@ -27,7 +27,7 @@ useEffect(() => {}, [webPage])
 
                     :
                 
-                    <ListItem  key={item.name} style={liStyle} onClick={e=>{onClickItem(e,item)}}>
+                    <ListItem  key={item.name} style={liStyle} onClick={e=>{onClickItem(e,item),onClick(e)}}>
                     {item[iconName]&&<IconItem icon={item.icon} style={{fontSize:"20px",margin:10}}/>}
                     {item[keyName]}
                     </ListItem>

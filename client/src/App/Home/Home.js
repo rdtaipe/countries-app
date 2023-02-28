@@ -10,7 +10,7 @@ import Audio from '../../Utils/Audio';
 import Cards from './Cards/Cards';
 
 import { Loading } from '../../Components/Loading';
-
+import { FlexCenterCenter } from '../../Components/Flex';
 
 function Home(props) {
     const dispatch = useDispatch()
@@ -29,7 +29,7 @@ useEffect(() => {
         <Container style={{background:colors.back}}>
     
             {getData.length>0&&<Video  w={500}/>}
-            {getData.length>0? <Cards />:<Loading/>}
+            {getData.length>0? <Cards />:<FlexCenterCenter><Loading/></FlexCenterCenter>}
          
          
         </Container>

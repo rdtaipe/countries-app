@@ -16,7 +16,7 @@ function View(props) {
     return (
         <Container>
         <Text className="title-header" style={{color:Colors.textBasic,fontWeight:700,lineHeight: 1.2}} type="h1">Hi,<br/> data on world <br/> countries  available here</Text>
-        <Text style={{color:Colors.textBasicTitle,fontSize:20,fontWeight:400}} type="p">Sign up before you start or exploring</Text>
+        <Text style={{color:Colors.textBasicTitle,fontSize:20,fontWeight:400}} type="p">Get started by signing up or exploring!</Text>
         <FlexCenterLeft style={{marginTop:"50px",height: "auto"}}>
         <Button style={{marginRight: 20}} type="disabled">Sign Up</Button>
         <Link to="/" onClickCapture={()=>{

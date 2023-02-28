@@ -93,7 +93,7 @@ export function SearchBar({exit,style,Refresh,className}) {
 
     const DefaulStyle={background:colors.boxBackground,height:40}
 
-const mixStyle = {...DefaulStyle,...style}
+    const mixStyle = {...DefaulStyle,...style}
     
     const Order=(item)=>{
         if(typeOrder===item.v1){
@@ -127,13 +127,15 @@ const mixStyle = {...DefaulStyle,...style}
             setMenuFilter(false)
         }
 
-         window.addEventListener('click', () => {
-             setInput('')
-             dispatch({type:"SET_INPUT_VALUE",payload:""})
-             if(inputRef.current!==null){
-                 inputRef.current.value=''
-             }
-         })
+        //  window.addEventListener('click', () => {
+        //      setInput('')
+        //      dispatch({type:"SET_INPUT_VALUE",payload:""})
+        //      if(inputRef.current!==null){
+        //          inputRef.current.value=''
+        //      }
+        //      setMenuFilter(false)
+        //  })
+
         if(contries.length>0,Refresh!==undefined){
             Refresh(Math.random())
         }
@@ -166,11 +168,12 @@ const mixStyle = {...DefaulStyle,...style}
         setCurrentOrderIcon(item.icon)
         dispatch({type:"SET_ORDER_TYPE",payload:item.name})
         Order(item)
+        setMenuFilter(false)
     }
     const setFilterIcon= (item)=>{
         setCurrentFilterIcon(item.icon)
         dispatch({type:"SET_FILTER_TYPE",payload:item.name})
-        setShow(false)
+        setMenuFilter(false)
     }
     //dinamic style
     var TextStyle={color:colors.textMenuTitleBasic,fontWeight:600,fontSize:20,paddingLeft: 15}
@@ -195,16 +198,14 @@ const mixStyle = {...DefaulStyle,...style}
          
             {menuFilter===true?   
             <FlexRight  style={{position:"absolute",top:35}}>
-            <MenuItem style={{width:200,height:"auto",background:colors.boxBackground,position:"absolute",padding:"10px 0px"}}>
+            <MenuItem style={{width:200,height:"auto",background:colors.boxBackground,position:"absolute",padding:"10px 0px"}} onClick={()=>{setMenuFilter(false)}}>
                     {webPage==='home'&&<Text style={TextStyle} >Filter By</Text>}
                     {webPage==='home'&&<List>
                         { orderIcons.map((item,i)=>{
                         return(
                             <ListItem style={{color:colors.textMenuTitleBasic}} onClick={(e)=>{
-                                e.preventDefault()
-                                e.stopPropagation()
-                            
-                                setOrderIcon(item)}}>
+                                setOrderIcon(item)
+                                }}>
                                 <IconItem icon={item.icon} style={{fontSize:"20px",margin:10}}/> 
                                 {
                                 typeOrder===item.v1||order===item.v2?item.text2:item.text1
@@ -223,7 +224,8 @@ const mixStyle = {...DefaulStyle,...style}
                     keyName="text" 
                     liStyle={{color:colors.allIconsActive}}
                     iconName="icon"
-                    onClickItem={(e,item)=>setFilterIcon(item)}
+                    close={setMenuFilter}
+                    onClickItem={(e,item)=>{setFilterIcon(item)}}
                     />
                 </MenuItem>
             </FlexRight>:null}
