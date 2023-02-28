@@ -26,6 +26,25 @@ display: flex;
 justify-content: center;
 align-items: center;
 z-index: 0!important;
-padding: 0 4%;
+padding-left: 4%;
+padding-right: 4%;
+padding-top:60px;
+padding-bottom:60px;
 overflow: hidden;
+
+
+
+@media screen and (min-width: 0px) and (max-width: 399px) {
+  /* Pantallas menores a 700px de ancho */
+  &{
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 799px) {
+  /* Pantallas entre 700px y 799px de ancho */
+  &{
+    flex-direction: column-reverse;
+  }
+}
 `

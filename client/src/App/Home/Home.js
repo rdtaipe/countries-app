@@ -21,7 +21,7 @@ function Home(props) {
 useEffect(() => {
 
     dispatch({type:"SET_PAGE_TYPE",payload:'home'})
-
+    dispatch({type:"REMOVE_ALL_COUNTRIES",payload:[]})
 }, [webPage,colors,getData])
 
 
@@ -43,6 +43,7 @@ position: absolute;
 top:0;
 width:100%;
 height:100vh;
+padding-top: 100px;
 z-index: 0!important;
 `
 

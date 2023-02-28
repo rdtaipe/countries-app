@@ -25,14 +25,14 @@ export function Ad(props) {
     return (
         <Container>
             <Text Styled={Title} style={{color: colors.textBasic}} type="h1">
-                Visit all the countries of the world in a single trip, create your own route and start traveling
+            Explore the world's<br/> countries in one journey,<br/>  chart your own path and begin your adventure
             </Text>
 
             <FlexCenterLeft Styled={AddStyle}>
                 
                 {activities.length>0?
                     <Link to="/activities">
-                    <Button style={{marginRight:10,background:colors.btnBasicDesabled,color:colors.btnTextBasicDesabled}} iconStyle={{marginLeft:8}}>You Activities</Button>
+                    <Button style={{marginRight:10,background:colors.btnBasicDesabled,color:colors.btnTextBasicDesabled}} iconStyle={{marginLeft:8}}>Activities</Button>
                     </Link>
                 :null}
                 <Link to="/form">
@@ -45,9 +45,8 @@ export function Ad(props) {
 export default Ad
 const Container = styled.div`
 position: relative;
-background: transparent;
 margin: 2% 0;
-width:400px;
+width:100%;
 height:200px;
 border-radius: 10px;
 z-index: 0!important;
@@ -58,13 +57,13 @@ padding: 0 20px;
 const Title= styled.h1`
 
 position: absolute;
-font-size: 24px;
+font-size: 25px;
 line-height: 1;
 font-weight: 600;
 z-index: 5;
 bottom: 70px;
-/* filter: invert(1)  contrast(10) saturate(10); */
-mix-blend-mode: exclusion
+filter: invert(0)  contrast(10) saturate(10);
+mix-blend-mode:difference
 /* padding-left: 2%; */
 
 `

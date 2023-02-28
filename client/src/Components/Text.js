@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import {useSelector} from "react-redux"
 import{MixStyledRules} from "../Utils/MixStyledRules"
-export const Text=({Styled,style,children,type,key})=>{
+export const Text=({Styled,style,children,type,key,className})=>{
     const colors = useSelector(state => state.theme.use())
 
     const Default={
@@ -12,7 +12,7 @@ export const Text=({Styled,style,children,type,key})=>{
 
 
         return (
-            <p key={key} style={Mix}>
+            <p key={key} style={Mix} className={className}>
                 {
                     children
                 }

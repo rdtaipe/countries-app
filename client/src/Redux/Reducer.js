@@ -198,6 +198,13 @@ const reducer = (state = initialState, {type,payload}) => {
                 selectedCountries:selectedCountries
             }
         }
+        case 'REMOVE_ALL_COUNTRIES':{
+
+            return {
+                ...state,
+                selectedCountries:payload
+            }
+        }
 
         case 'SET_USER_TYPE':{
             return{

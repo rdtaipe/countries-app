@@ -69,7 +69,7 @@ function App() {
 
     document.body.style.background = colors.back
   }, [page,pages])
-// console.log(page,userType)
+console.log(page)
 return (
     <div className="App">
 

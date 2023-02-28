@@ -10,10 +10,9 @@ import { SearchBar } from '../../Components/SearchBar';
 function Header() {
     const colors = useSelector(state => state.theme.use())
 
-
     return (
-        <Container  >
-          <Start>
+        <Container  out={colors.btnBasic}>
+          <Start >
             <Link to={"/"}>
             <Logo style={{fill:colors.btnBasic}}/>
             </Link>
@@ -21,16 +20,17 @@ function Header() {
           </Start>
 
           <Center>
-            <SearchBar/>
+            <SearchBar className={'SearchBar'}/>
             
             {/* <Link to="/"><h1 style={{color:mode==='light'?"black":"white"}}>🏠 Home </h1></Link> */}
      
 
           </Center>
-            <End> 
+            <End > 
            
-              <Theme/> 
+            <Theme/> 
               <BtnCreate style={{background:colors.btnBasic,color:colors.btnTextBasic}}>Sign Up</BtnCreate>
+             
               </End>
         </Container>
     )
@@ -49,8 +49,36 @@ display: flex;
 align-items: center;
 padding: 0 50px;
 backdrop-filter: blur(20px) saturate(3) brightness(.9);
+box-sizing: border-box;
 z-index: 99999!important;
 display: flex;
+shape-rendering:geometricPrecision;
+
+ @media screen and (min-width: 0px) and (max-width: 399px) {
+  /* Pantallas menores a 700px de ancho */
+  &{
+    height: 100px;
+    padding-bottom:40px;
+    padding-left: 2%;
+    padding-right: 2%;
+
+    
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 799px) {
+  /* Pantallas entre 700px y 799px de ancho */
+  &{
+    height: 100px;
+    padding-bottom:40px;
+    padding-left: 4%;
+    padding-right: 4%;
+    
+  }
+}
+
+
+
 `
 const End = styled.div`
 position: relative;
@@ -66,6 +94,32 @@ width: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
+
+
+@media screen and (min-width: 0px) and (max-width: 399px) {
+  /* Pantallas menores a 700px de ancho */
+  &{
+    position: absolute;
+    bottom:5px;
+    left: 0px;
+    padding-left: 2%;
+    padding-right: 2%;
+    
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 799px) {
+  /* Pantallas entre 700px y 799px de ancho */
+  &{
+    position: absolute;
+    bottom:5px;
+    left: 0px;
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+}
+
 `
 const Start = styled.div`
 position: relative;

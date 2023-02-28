@@ -147,7 +147,8 @@ display: flex;
 justify-content: center;
 align-items: center;
 backdrop-filter: blur(20px) saturate(3) brightness(.9);
-
+box-sizing: border-box;
+shape-rendering:geometricPrecision;
 z-index: 99;
 
 & .n-pag.active{

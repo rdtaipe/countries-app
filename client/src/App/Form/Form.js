@@ -5,8 +5,6 @@ import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-
-
 import { Container } from '../../Components/Container'
 import { Button } from '../../Components/Button'
 import { SearchBar } from '../../Components/SearchBar'
@@ -36,6 +34,7 @@ function Form() {
     const [durationMessage,setDurationMessage] = useState('')
     const [seasonMessage,setSeasonMessage] = useState('')
     const [countriesMessage,setCountriesMessage] = useState('')
+    const [err,setErr]=useState(false)
 
     const [generalMessage,setGeneralMessage] = useState('')
 
@@ -57,24 +56,17 @@ function Form() {
             .then(res => {
                 dispatch({type:"SET_PAGE_TYPE",payload:'home'})
                 history.push('/')
-                  
             })
             .catch(err => {
-                console.log(err);
+
                 setGeneralMessage('Something went wrong, please try again later')
+                setErr(true)
+            
             })
 
         }
 
-        return () => {
-            setNameMessage('')
-            setDifficultyMessage('')
-            setDurationMessage('')
-            setSeasonMessage('')
-            setCountriesMessage('')
-            setGeneralMessage('')
 
-        }
 
     },[page,contries,refresh,pass])
 
@@ -82,52 +74,46 @@ function Form() {
     const ifPass= () => {
         if(name.length < 3){
             setNameMessage('Name must be at least 3 characters long')
-            setPass(false)
-            
         }else{
             setNameMessage('')
-            setPass(true)
         }
         if(difficulty === 0){
             setDifficultyMessage('Difficulty must be selected')
-            setPass(false)
+     
         }else{
             setDifficultyMessage('')
-            setPass(true)
-
         }
         if(duration === ''){
             setDurationMessage('Duration must be selected')
-            setPass(false)
         }else{
             setDurationMessage('')
-            setPass(true)
         }
         if(season === ''){
             setSeasonMessage('Season must be selected')
-            setPass(false)
         }else{
             setSeasonMessage('')
-            setPass(true)
         }
         if(contries.length === 0){
             setCountriesMessage('Countries must be selected')
-            setPass(false)
         }else{
             setCountriesMessage('')
-            setPass(true)
         }
 
 
     }
 
 
-
     const HandleSubmit = (e) => {
         e.preventDefault()
-    ifPass()
-    
-
+        ifPass()
+        setRefresh(Math.random())
+        if(name.length < 3&&difficulty === 0&&duration === ''&&season === ''&&contries.length === 0){
+            setPass(false)
+            setGeneralMessage('the fields have not been filled in yet, please fill them in')
+        }else if(name.length >3&&difficulty > 0&&duration !== ''&&season !== ''&&contries.length > 0){
+            setPass(true)
+            
+        }
 
     }
 
@@ -149,8 +135,18 @@ function Form() {
             <FormInput>
                 <Countries contries={contries} setRefresh={setRefresh} message={countriesMessage} setMessage={setCountriesMessage}  titleStyle={titlesStyle}/>
             </FormInput>
+            <FormInput>
+            <FlexCenterLeft>
+                {err==true?
+                <Link to={"/"} onClickCapture={()=>{dispatch({type:"SET_PAGE_TYPE",payload:'home'})}}> 
+                    <Button style={{padding: "22px 24px",fontSize: 16,paddingRight: 10}} type="disabled">Go Home</Button>
+                </Link>:null
+                }
             <Button type="submit" style={{padding: "22px 24px",fontSize: 16}} iconStyle={{paddingLeft:"6px",fontSize: 25}} iconRight={"send"}>Submit</Button>
+
+            </FlexCenterLeft>
             <Text>{generalMessage}</Text>
+            </FormInput>
         </FormContainer>
 
         </Container>

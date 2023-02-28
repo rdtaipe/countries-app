@@ -16,11 +16,9 @@ function Detail(props) {
 
 
     useEffect(() => {
+        dispatch({type:"SET_PAGE_TYPE",payload:'detail'})
         getDetail(name).then(res => {
             setPlace(res.data)
-            console.log(res.data)
-            dispatch({type:"SET_PAGE_TYPE",payload:'filter'})
-         
         }).catch(err => {
             dispatch({type:"SET_PAGE_TYPE",payload:"404"})
             console.log(name)

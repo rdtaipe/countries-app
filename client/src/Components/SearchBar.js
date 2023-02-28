@@ -5,7 +5,6 @@ import {useDispatch,useSelector} from 'react-redux'
 import {OrderByAtoZ,OrderByZtoA, OrderByMaxPopulation, OrderByMinPopulation,OrderByMaxArea,OrderByMinArea,} from '../Utils/sort'
 import {IconItem} from './IconItem'
 import { FlexCenterLeft, FlexCenterRight } from './Flex'
-import { Box } from './Box'
 import { List } from './List'
 import {MenuItem} from './MenuItem'
 import { FlexLeft ,FlexRight } from './Flex'
@@ -25,6 +24,7 @@ const filterIcons =[
     {icon:"map",name:"region",text:"Region"},
     {icon:"location_city",name:"capital",text:"Capital"},
 ]
+
 const filterTypeUrl =(key,value) =>{
 
     if(key==='all'){
@@ -66,16 +66,17 @@ const sort= (arr,order) =>{
   
 }
 
-export function SearchBar({exit,style,Refresh}) {
+export function SearchBar({exit,style,Refresh,className}) {
     const dispatch = useDispatch()
     const webPage= useSelector(state => state.page);
     const [menuFilter,setMenuFilter] = useState(false)//filter
 
     const colors = useSelector(state => state.theme.use())
     const filterType= useSelector(state => state.sort.filter)
+    const orderType= useSelector(state=> state.sort.order)
     
-    const [currentFilterIcon,setCurrentFilterIcon]= useState("history_edu")
-    const [currentOrderIcon, setCurrentOrderIcon] = useState("all_inclusive")
+    const [currentFilterIcon,setCurrentFilterIcon]= useState(filterIcons.reduce((acc, curr) => curr.name === filterType? [...acc, curr] : acc, [])[0].icon||"history_edu")//"history_edu"
+    const [currentOrderIcon, setCurrentOrderIcon] = useState("all_inclusive")//"all_inclusive"
 
     const contries= useSelector(state => state.selectedCountries)
 
@@ -90,7 +91,7 @@ export function SearchBar({exit,style,Refresh}) {
 
     const [order,setOrder] = useState("all")
 
-    const DefaulStyle={background:colors.boxBackground,width:400,height:40}
+    const DefaulStyle={background:colors.boxBackground,height:40}
 
 const mixStyle = {...DefaulStyle,...style}
     
@@ -138,7 +139,7 @@ const mixStyle = {...DefaulStyle,...style}
         }
     
         changeInputStyle()
-    }, [input,colors,sortFilter,sortOrder,filterType,typeOrder,order,contries,webPage])
+    }, [input,colors,sortFilter,sortOrder,filterType,typeOrder,order,webPage])
 // console.log(webPage)
     const showFilterFunc = (e) => {
         e.preventDefault()
@@ -162,11 +163,9 @@ const mixStyle = {...DefaulStyle,...style}
     }
     
     const setOrderIcon= (item)=>{
-    
         setCurrentOrderIcon(item.icon)
         dispatch({type:"SET_ORDER_TYPE",payload:item.name})
         Order(item)
-        setShow(false)
     }
     const setFilterIcon= (item)=>{
         setCurrentFilterIcon(item.icon)
@@ -177,17 +176,17 @@ const mixStyle = {...DefaulStyle,...style}
     var TextStyle={color:colors.textMenuTitleBasic,fontWeight:600,fontSize:20,paddingLeft: 15}
 
     return (
-        <Box style={mixStyle}>
-            <FlexCenterLeft style={{width: "40px",}}>
+        <Container style={mixStyle} className={className}>
+            <FlexCenterLeft style={{width: "40px",}} >
                 <IconItem icon={"search"} style={{color:colors.allIconsActive,padding: 8,fontSize:24}}/>
             </FlexCenterLeft>
             
             <FlexCenterLeft>
-                <Input ref={inputRef} className="inputChangeColor" style={{color:colors.allIconsActive}}   placeholder='Search Country' onChange={handleInput}>
+                <Input ref={inputRef}  style={{color:colors.allIconsActive}}   placeholder='Search Country' onChange={handleInput}>
                 </Input>
             </FlexCenterLeft>
                 
-            <FlexCenterRight>
+            <FlexCenterRight >
                 {webPage==='home'&&   <IconItem icon={currentOrderIcon} style={{fontSize:"16px",marginRight:5,marginTop:8,color:colors.allIconsActive}}/> }
                 <IconItem icon={currentFilterIcon} style={{fontSize:"16px",marginRight:-8,marginTop:8,color:colors.allIconsActive}}/> 
                 <IconItem  onClick={showFilterFunc} icon="tune" style={{fontSize:24,padding:8,marginLeft:8,color:colors.allIconsActive,zIndex: 999}}/> 
@@ -229,8 +228,6 @@ const mixStyle = {...DefaulStyle,...style}
                 </MenuItem>
             </FlexRight>:null}
 
-
-
            {input.length>0&&webPage!=="home"?
            <FlexLeft  style={{position:"absolute",top:35}}>
             <MenuItem style={{maxHeight:200}}>
@@ -246,7 +243,7 @@ const mixStyle = {...DefaulStyle,...style}
             </FlexLeft>
             :null}
        
-        </Box>
+        </Container>
     )
 }
 
@@ -261,5 +258,32 @@ const Input = styled.input`
     font-size: 16px;
     font-weight: 500;
     margin-top: 3px;
+
+`
+const Container = styled.div`
+position: relative;
+width: 400px;
+height: 200px;
+border-radius: 4px;
+padding: 4px;
+z-index: 20;
+display: flex;
+
+@media screen and (min-width: 0px) and (max-width: 399px) {
+  /* Pantallas menores a 700px de ancho */
+  &{
+    width: 100%;
+    
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 799px) {
+  /* Pantallas entre 700px y 799px de ancho */
+  &{
+    width: 100%;
+    
+  }
+}
+
 
 `
